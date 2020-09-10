@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.succulent.goods.repository.GoodsIdentityRepository">
+    <resultMap id="GoodsIdentity" type="com.succulent.goods.entity.GoodsIdentity">
+        <id column="id" property="id" javaType="String" jdbcType="VARCHAR"/>
+        <id column="discount" property="discount" />
+        <association column="id" property="skus" select="com.succulent.goods.repository.GoodsSkuRepository.findByGoodsId" fetchType="lazy"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="GoodsIdentity">
+        INSERT INTO
+            goods_identity
+            (id, title, cover, discount, intro, type, category_id, seq, stat, date, date_start, date_end, subject, address)
+        VALUES
+            (#{id}, #{title}, #{cover}, #{discount}, #{intro}, #{type}, #{categoryId}, #{seq}, #{stat}, #{date}, #{dateStart}, #{dateEnd}, #{subject}, #{address})
+    </insert>
+
+    <select id="findAll" parameterType="GoodsIdentity" resultMap="GoodsIdentity">
+        SELECT
+            *
+        FROM
+            goods_identity
+        <where>
+            <if test="id         != null">    id       = #{id}</if>
+            <if test="categoryId != null">AND category_id = #{categoryId}</if>
+            <if test="type       != null">AND type = #{type}</if>
+            <if test="stat       != null">AND stat = #{stat}</if>
+        </where>
+        ORDER BY
+            seq
+        ASC
+<!--        <if test="pageNum != null and pageSize != null">-->
+<!--            LIMIT #{queryOffset}, #{queryRows}-->
+<!--        </if>-->
+    </select>
+
+    <select id="findById" parameterType="String" resultMap="GoodsIdentity">
+        SELECT * FROM goods_identity WHERE id = #{id}
+    </select>
+
+    <update id="updateById" parameterType="GoodsIdentity">
+        UPDATE
+            goods_identity
+        <set>
+            <if test="title    != null"> title = #{title},</if>
+            <if test="cover    != null"> cover = #{cover},</if>
+            <if test="discount != null"> discount = #{discount},</if>
+            <if test="intro    != null"> intro = #{intro},</if>
+            <if test="type     != null"> type = #{type},</if>
+            <if test="categoryId != null"> category_id = #{categoryId},</if>
+            <if test="seq      != null"> seq = #{seq},</if>
+            <if test="dateStart     != null"> date_start = #{dateStart},</if>
+            <if test="dateEnd != null"> date_end = #{dateEnd},</if>
+            <if test="subject      != null"> subject = #{subject},</if>
+            <if test="address      != null"> address = #{address},</if>
+            <if test="stat     != null"> stat = #{stat}</if>
+        </set>
+        WHERE
+            id = #{id}
+    </update>
+
+<!--    <delete id="deleteById" parameterType="OrderIdentity">-->
+<!--        DELETE FROM-->
+<!--            order_identity-->
+<!--        <where>-->
+<!--            <if test="id         != null">    id          = #{id}</if>-->
+<!--            <if test="supplierId != null">AND supplier_id = #{supplierId}</if>-->
+<!--        </where>-->
+<!--    </delete>-->
+
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.succulent.user.repository.UserAddressRepository">
+    <resultMap id="UserAddress" type="UserAddress">
+    </resultMap>
+
+    <insert id="insert" parameterType="UserAddress">
+        INSERT INTO
+            user_address
+            (id, uid, name, phone, zip, note, main, stat, date,country,province,city,dist)
+        VALUES
+            (#{id}, #{uid}, #{name}, #{phone}, #{zip}, #{note}, #{main}, #{stat}, #{date},#{country},#{province},#{city},#{dist})
+    </insert>
+
+    <select id="findAll" parameterType="UserAddress" resultMap="UserAddress">
+        SELECT
+            *
+        FROM
+            user_address
+        <where>
+            <if test="id        != null">    id = #{id}</if>
+            <if test="uid       != null">AND uid = #{uid}</if>
+        </where>
+    </select>
+
+    <select id="findById" parameterType="String" resultMap="UserAddress">
+        SELECT
+            *
+        FROM
+            user_address
+        WHERE
+            id = #{id}
+    </select>
+
+    <update id="updateById">
+        UPDATE
+            user_address
+        <set>
+            <if test="name    != null">name    = #{name},</if>
+            <if test="phone   != null">phone   = #{phone},</if>
+            <if test="zip     != null">zip     = #{zip},</if>
+            <if test="note != null">note = #{note},</if>
+            <if test="main    != null">main    = #{main},</if>
+            <if test="stat    != null">stat    = #{stat},</if>
+            <if test="date   != null">date   = #{date},</if>
+            <if test="country     != null">country     = #{country},</if>
+            <if test="province != null">province = #{province},</if>
+            <if test="city    != null">city    = #{city},</if>
+            <if test="dist    != null">dist   = #{dist}</if>
+        </set>
+        <where>
+            <if test="id        != null">    id  = #{id}</if>
+            <if test="uid       != null">AND uid = #{uid}</if>
+        </where>
+    </update>
+
+</mapper>

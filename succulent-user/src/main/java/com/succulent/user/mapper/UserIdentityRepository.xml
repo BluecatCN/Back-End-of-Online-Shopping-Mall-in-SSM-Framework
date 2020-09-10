@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.succulent.user.repository.UserIdentityRepository">
+    <resultMap id="UserIdentity" type="UserIdentity">
+        <id column="id" property="id" javaType="String" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="UserIdentity">
+        INSERT INTO
+            user_identity
+            (id, wx_open_id, wx_union_id, phone, passcode, token, stat, id_code, date)
+        VALUES
+            (#{id}, #{wxOpenId}, #{wxUnionId}, #{phone}, #{passcode}, #{token}, #{stat}, #{idCode}, #{date})
+    </insert>
+
+    <select id="findAll" parameterType="UserIdentity" resultMap="UserIdentity">
+        SELECT
+            *
+        FROM
+            user_identity
+        <where>
+            <if test="id        != null">    id = #{id}</if>
+            <if test="wxOpenId  != null">AND wx_open_id = #{wxOpenId}</if>
+            <if test="wxUnionId != null">AND wx_union_id = #{wxUnionId}</if>
+            <if test="phone     != null">AND phone = #{phone}</if>
+            <if test="passcode  != null">AND passcode = #{passcode}</if>
+            <if test="token     != null">AND token = #{token}</if>
+            <if test="stat      != null">AND stat = #{stat}</if>
+            <if test="idCode    != null">AND id_code = #{idCode}</if>
+            <if test="date      != null">AND date = #{date}</if>
+        </where>
+    </select>
+
+</mapper>

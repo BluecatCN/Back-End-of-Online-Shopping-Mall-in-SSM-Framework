@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.succulent.goods.repository.GoodsOrderRepository">
+    <resultMap id="GoodsOrder" type="GoodsOrder">
+        <id column="id" property="id" javaType="String" jdbcType="VARCHAR"/>
+        <result column="uid" property="uid" javaType="String" jdbcType="VARCHAR"/>
+        <association column="uid" property="user" select="com.succulent.user.repository.UserInfoRepository.findByUid" fetchType="lazy"/>
+        <collection column="id" property="goodsList" select="com.succulent.goods.repository.OrderGoodsRepository.findByOrderId" fetchType="lazy"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="GoodsOrder">
+        INSERT INTO
+            goods_order
+            (id, uid, trans_id, amount, discount, body, comment, stat, date, version)
+        VALUES
+            (#{id}, #{uid}, #{transId}, #{amount}, #{discount}, #{body}, #{comment}, #{stat}, #{date}, #{version})
+    </insert>
+
+    <select id="findAll" parameterType="GoodsOrder" resultMap="GoodsOrder">
+        SELECT
+            *
+        FROM
+            goods_order
+        <where>
+            <if test="id      != null">    id       = #{id}</if>
+            <if test="uid     != null">AND uid = #{uid}</if>
+            <if test="transId != null">AND trans_id = #{transId}</if>
+            <if test="stat    != null">AND stat = #{stat}</if>
+        </where>
+        ORDER BY
+            date
+        DESC
+    </select>
+    
+    <select id="findByLtDateAndStat" parameterType="GoodsOrder" resultMap="GoodsOrder">
+        SELECT
+            *
+        FROM
+            goods_order
+        WHERE
+            date &lt; #{date} AND stat = #{stat}
+    </select>
+
+    <select id="findDuplicatedOrderGoodsCount" parameterType="DuplicatedOrderGoodsCountQuery" resultType="Integer">
+        SELECT
+            sum(order_goods.quantity)
+        FROM
+            goods_order
+        LEFT JOIN
+            order_goods
+        ON
+            goods_order.id = order_goods.order_id
+        WHERE
+            goods_order.uid = #{uid}
+        AND
+            order_goods.sku_id = #{skuId}
+    </select>
+
+    <update id="updateById" parameterType="GoodsOrder">
+        UPDATE
+            goods_order
+        <set>
+            <if test="transId  != null">trans_id = #{transId},</if>
+            <if test="stat     != null">stat = #{stat}</if>
+        </set>
+        WHERE
+            id = #{id}
+    </update>
+
+    <update id="updateTransIdById" parameterType="GoodsOrder">
+        UPDATE
+            goods_order
+        SET
+            trans_id = #{transId}
+        WHERE
+            id = #{id}
+    </update>
+
+    <update id="updateStatByTransId" parameterType="GoodsOrder">
+        UPDATE
+            goods_order
+        SET
+            stat = #{stat}
+        WHERE
+            trans_id = #{transId}
+    </update>
+
+<!--    <delete id="deleteById" parameterType="OrderIdentity">-->
+<!--        DELETE FROM-->
+<!--            order_identity-->
+<!--        <where>-->
+<!--            <if test="id         != null">    id          = #{id}</if>-->
+<!--            <if test="supplierId != null">AND supplier_id = #{supplierId}</if>-->
+<!--        </where>-->
+<!--    </delete>-->
+
+</mapper>

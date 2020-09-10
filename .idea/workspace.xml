@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="baa95fc5-7775-40d7-a1d1-382471ecec88" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1bpj07QR1C7Ljc1sgPq2zeGCpqe" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.succulent.user" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.succulent.user.common" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/succulent-user/src/main/java/com/succulent/user/common" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="succulent-user [spring-boot:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="spring-boot:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/succulent-user" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="baa95fc5-7775-40d7-a1d1-382471ecec88" name="Default Changelist" comment="" />
+      <created>1589335702534</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589335702534</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="116" y="102" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589337028966">
+      <screen x="0" y="23" width="1440" height="836" />
+    </state>
+    <state x="116" y="102" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.836@0.23.1440.836" timestamp="1589337028966" />
+    <state x="464" y="131" key="#com.intellij.ide.util.MemberChooser" timestamp="1589335868370">
+      <screen x="0" y="23" width="1440" height="836" />
+    </state>
+    <state x="464" y="131" key="#com.intellij.ide.util.MemberChooser/0.23.1440.836@0.23.1440.836" timestamp="1589335868370" />
+    <state x="450" y="373" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1589336014370">
+      <screen x="0" y="23" width="1440" height="836" />
+    </state>
+    <state x="450" y="373" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1440.836@0.23.1440.836" timestamp="1589336014370" />
+    <state x="418" y="328" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1589336015727">
+      <screen x="0" y="23" width="1440" height="836" />
+    </state>
+    <state x="418" y="328" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.23.1440.836@0.23.1440.836" timestamp="1589336015727" />
+    <state width="1145" height="215" key="GridCell.Tab.0.bottom" timestamp="1589337071929">
+      <screen x="0" y="23" width="1440" height="836" />
+    </state>
+    <state width="1145" height="215" key="GridCell.Tab.0.bottom/0.23.1440.836@0.23.1440.836" timestamp="1589337071929" />
+    <state width="1145" height="215" key="GridCell.Tab.0.center" timestamp="1589337071928">
+      <screen x="0" y="23" width="1440" height="836" />
+    </state>
+    <state width="1145" height="215" key="GridCell.Tab.0.center/0.23.1440.836@0.23.1440.836" timestamp="1589337071928" />
+    <state width="1145" height="215" key="GridCell.Tab.0.left" timestamp="1589337071927">
+      <screen x="0" y="23" width="1440" height="836" />
+    </state>
+    <state width="1145" height="215" key="GridCell.Tab.0.left/0.23.1440.836@0.23.1440.836" timestamp="1589337071927" />
+    <state width="1145" height="215" key="GridCell.Tab.0.right" timestamp="1589337071929">
+      <screen x="0" y="23" width="1440" height="836" />
+    </state>
+    <state width="1145" height="215" key="GridCell.Tab.0.right/0.23.1440.836@0.23.1440.836" timestamp="1589337071929" />
+    <state x="139" y="23" width="1024" height="836" key="SettingsEditor" timestamp="1589337019405">
+      <screen x="0" y="23" width="1440" height="836" />
+    </state>
+    <state x="139" y="23" width="1024" height="836" key="SettingsEditor/0.23.1440.836@0.23.1440.836" timestamp="1589337019405" />
+  </component>
+</project>

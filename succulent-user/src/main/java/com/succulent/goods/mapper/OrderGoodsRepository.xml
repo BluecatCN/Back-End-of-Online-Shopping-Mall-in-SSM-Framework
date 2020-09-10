@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.succulent.goods.repository.OrderGoodsRepository">
+    <resultMap id="OrderGoods" type="OrderGoods">
+        <result column="order_id" property="orderId" javaType="String" jdbcType="VARCHAR"/>
+        <result column="sku_id" property="skuId" javaType="String" jdbcType="VARCHAR"/>
+        <result column="quantity" property="quantity" javaType="Integer" jdbcType="INTEGER"/>
+        <result column="amount" property="amount" javaType="Integer" jdbcType="INTEGER"/>
+        <result column="discount" property="discount" javaType="Integer" jdbcType="INTEGER"/>
+        <result column="stat" property="stat" javaType="Integer" jdbcType="TINYINT"/>
+        <result column="version" property="version" javaType="Integer" jdbcType="INTEGER"/>
+        <association property="info" javaType="GoodsIdentity">
+            <result column="cover" property="cover"/>
+            <result column="title" property="title"/>
+            <result column="type" property="type"/>
+        </association>
+    </resultMap>
+
+    <insert id="insert" parameterType="OrderGoods">
+        INSERT INTO
+            order_goods
+            (order_id, sku_id, quantity, amount, discount, stat, version)
+        VALUES
+            (#{orderId}, #{skuId}, #{quantity}, #{amount}, #{discount}, #{stat}, #{version})
+    </insert>
+
+    <select id="findAll" parameterType="OrderGoods" resultMap="OrderGoods">
+        SELECT
+            *
+        FROM
+            order_goods
+        <where>
+            <if test="orderId != null">    order_id = #{orderId}</if>
+            <if test="skuId   != null">AND sku_id = #{skuId}</if>
+            <if test="stat    != null">AND stat = #{stat}</if>
+        </where>
+    </select>
+
+    <select id="findByOrderId" parameterType="String" resultMap="OrderGoods">
+        SELECT
+            order_goods.*,
+            goods.cover AS cover,
+            goods.title AS title,
+            goods.type AS type
+        FROM
+            order_goods
+        LEFT JOIN
+            goods_sku sku
+        ON
+            order_goods.sku_id = sku.id
+        LEFT JOIN
+            goods_identity goods
+        ON
+            goods.id = sku.goods_id
+        WHERE
+            order_goods.order_id = #{orderId}
+    </select>
+
+    <update id="updateById" parameterType="OrderGoods">
+        UPDATE
+            order_goods
+        <set>
+            <if test="stat     != null">stat = #{stat}</if>
+        </set>
+        WHERE
+            id = #{id}
+    </update>
+
+</mapper>
